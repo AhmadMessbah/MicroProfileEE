@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+    <!-- Data Sources Configuration -->
+    
+    <!-- Person Database -->
+    <Resource id="personDB" type="DataSource">
+        <JdbcDriver>com.mysql.cj.jdbc.Driver</JdbcDriver>
+        <Url>jdbc:mysql://localhost:3306/person_db?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</Url>
+        <UserName>root</UserName>
+        <Password>root123</Password>
+        <JtaManaged>true</JtaManaged>
+        <InitialSize>5</InitialSize>
+        <MaxActive>20</MaxActive>
+        <MaxIdle>10</MaxIdle>
+        <MinIdle>5</MinIdle>
+        <MaxWait>30000</MaxWait>
+        <ValidationQuery>SELECT 1</ValidationQuery>
+        <TestOnBorrow>true</TestOnBorrow>
+        <TestWhileIdle>true</TestWhileIdle>
+        <TimeBetweenEvictionRunsMillis>30000</TimeBetweenEvictionRunsMillis>
+    </Resource>
+
+    <!-- SimCard Database -->
+    <Resource id="simcardDB" type="DataSource">
+        <JdbcDriver>com.mysql.cj.jdbc.Driver</JdbcDriver>
+        <Url>jdbc:mysql://localhost:3306/simcard_db?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true</Url>
+        <UserName>root</UserName>
+        <Password>root123</Password>
+        <JtaManaged>true</JtaManaged>
+        <InitialSize>5</InitialSize>
+        <MaxActive>20</MaxActive>
+        <MaxIdle>10</MaxIdle>
+        <MinIdle>5</MinIdle>
+        <MaxWait>30000</MaxWait>
+        <ValidationQuery>SELECT 1</ValidationQuery>
+        <TestOnBorrow>true</TestOnBorrow>
+        <TestWhileIdle>true</TestWhileIdle>
+        <TimeBetweenEvictionRunsMillis>30000</TimeBetweenEvictionRunsMillis>
+    </Resource>
+
+    <!-- Transaction Manager Configuration -->
+    <TransactionManager id="TransactionManager">
+        <TransactionSynchronizationRegistry>org.apache.openejb.core.transaction.TransactionSynchronizationRegistryImpl</TransactionSynchronizationRegistry>
+    </TransactionManager>
+
+    <!-- CDI Configuration -->
+    <Cdi>
+        <Enabled>true</Enabled>
+        <BeanDiscoveryMode>all</BeanDiscoveryMode>
+    </Cdi>
+
+    <!-- MicroProfile Configuration -->
+    <MicroProfile>
+        <RestClient>
+            <Enabled>true</Enabled>
+        </RestClient>
+    </MicroProfile>
+
+    <!-- Logging Configuration -->
+    <Logging>
+        <Level>INFO</Level>
+        <Console>true</Console>
+        <File>true</File>
+    </Logging>
+
+    <!-- Security Configuration -->
+    <Security>
+        <Realm className="org.apache.catalina.realm.MemoryRealm">
+            <CredentialHandler className="org.apache.catalina.realm.MessageDigestCredentialHandler" algorithm="MD5" />
+        </Realm>
+    </Security>
+
+    <!-- WebSocket Configuration -->
+    <Connector port="8080" protocol="HTTP/1.1" 
+               connectionTimeout="20000" 
+               redirectPort="8443" 
+               maxThreads="200" 
+               minSpareThreads="10" 
+               maxSpareThreads="50" />
+
+    <!-- JNDI Configuration -->
+    <Jndi>
+        <Resource id="jdbc/personDB" type="DataSource" provider="personDB" />
+        <Resource id="jdbc/simcardDB" type="DataSource" provider="simcardDB" />
+    </Jndi>
+
+</tomee>
