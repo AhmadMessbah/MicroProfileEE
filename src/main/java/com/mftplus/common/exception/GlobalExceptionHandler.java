@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * Handles all exceptions across the application
  */
 @WebServlet("/error")
-public class GlobalExceptionHandler extends HttpServlet {
+public class    GlobalExceptionHandler extends HttpServlet {
     
     private static final Logger logger = Logger.getLogger(GlobalExceptionHandler.class.getName());
     

@@ -14,6 +14,7 @@ import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validator;
 import lombok.extern.slf4j.Slf4j;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
+//import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import java.util.List;
 import java.util.Optional;
@@ -31,7 +32,7 @@ public class SimCardService {
     @EJB
     private SimCardRepository simCardRepository;
     
-    @Inject
+//    @Inject
     @RestClient
     private PersonClient personClient;
     

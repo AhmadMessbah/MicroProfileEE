@@ -66,7 +66,7 @@ class PersonTest {
         assertThat(newPerson.getCreatedAt()).isNotNull();
         assertThat(newPerson.getUpdatedAt()).isNotNull();
         // Allow small time difference due to execution timing
-        assertThat(newPerson.getCreatedAt()).isCloseTo(newPerson.getUpdatedAt(), within(1, ChronoUnit.MILLIS));
+        assertThat(newPerson.getCreatedAt()).isCloseTo(newPerson.getUpdatedAt(), within(1, MILLIS));
     }
     
     @Test

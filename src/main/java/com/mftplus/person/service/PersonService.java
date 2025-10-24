@@ -30,7 +30,7 @@ public class PersonService {
     @EJB
     private PersonRepository personRepository;
     
-    @Inject
+//    @Inject
     @RestClient
     private SimCardClient simCardClient;
     
